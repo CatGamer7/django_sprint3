@@ -149,8 +149,7 @@ dmypy.json
 media/
 blogicum/static/
 blogicum/static_dev/
-blogicum/templates/
-templates/
+/templates/
 
 # Migrations
 blogicum/*/migrations
