@@ -150,6 +150,7 @@ media/
 blogicum/static/
 blogicum/static_dev/
 blogicum/templates/
+templates/
 
 # Migrations
 blogicum/*/migrations
