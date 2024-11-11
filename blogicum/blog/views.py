@@ -7,7 +7,10 @@ from datetime import datetime, timezone
 # Create your views here.
 def index(request):
 
-    posts = _filter_posts(Post.objects.select_related('category'))[:5]
+    posts = _filter_posts(Post.objects.select_related(
+        'category', 'author', 'location'
+    ))[:5]
+
     return render(request, 'blog/index.html',
                   {'post_list': posts})
 
@@ -34,7 +37,9 @@ def category_posts(request, category_slug):
         slug=category_slug,
         is_published=True
     )
-    posts = _filter_posts(category_obj.posts, category_filtered=True)
+    posts = _filter_posts(category_obj.posts.select_related(
+        'category', 'author', 'location'
+    ), category_filtered=True)
 
     return render(request, 'blog/category.html',
                   {
